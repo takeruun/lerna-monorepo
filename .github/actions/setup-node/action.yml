@@ -19,6 +19,10 @@ runs:
         restore-keys: |
           ${{ runner.os }}-root-
 
+    - name: Install lerna
+      shell: bash
+      run: npm install --global lerna
+
     - name: Install dependencies
       if: steps.cache-root.outputs.cache-hit != 'true'
       shell: bash
