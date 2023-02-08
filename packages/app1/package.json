@@ -1,0 +1,14 @@
+{
+  "name": "app",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "build": "tsc -P tsconfig.json",
+    "test": "jest -i --config=./jest.config.js"
+  },
+  "devDependencies": {
+    "@types/jest": "^28.0.0",
+    "jest": "28.0.0",
+    "ts-jest": "^28.0.0"
+  }
+}
