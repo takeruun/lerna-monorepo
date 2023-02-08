@@ -6,9 +6,10 @@ runs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - uses: actions/setup-node@v3
+    - name: 'Setup Node.js ${{ matrix.node-version }}'
+      uses: actions/setup-node@v3
       with:
-        node-version: '16.17.1'
+        node-version: ${{ matrix.node-version }}
 
     - uses: actions/cache@v3
       id: cache-root
