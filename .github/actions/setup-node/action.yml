@@ -35,6 +35,12 @@ runs:
         restore-keys: |
           ${{ runner.os }}-app2-
 
+    - name: cache ?
+      run: |
+        echo ${{ steps.cache-root.outputs.cache-hit }}
+        echo ${{ steps.cache-app1.outputs.cache-hit }}
+        echo ${{ steps.cache-app2.outputs.cache-hit }}
+
     - name: Install dependencies
       if: |
         steps.cache-root.outputs.cache-hit != 'true' ||
