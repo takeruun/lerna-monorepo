@@ -19,11 +19,30 @@ runs:
         restore-keys: |
           ${{ runner.os }}-root-
 
+    - uses: actions/cache@v3
+      id: cache-app1
+      with:
+        path: ./app1/node_modules
+        key: ${{ runner.os }}-app1-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-app1-
+
+    - uses: actions/cache@v3
+      id: cache-app2
+      with:
+        path: ./app2/node_modules
+        key: ${{ runner.os }}-app2-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-app2-
+
     - name: Install lerna
       shell: bash
       run: npm install --global lerna
 
     - name: Install dependencies
-      if: steps.cache-root.outputs.cache-hit != 'true'
+      if: |
+        steps.cache-root.outputs.cache-hit != 'true' ||
+        steps.cache-app1.outputs.cache-hit != 'true' ||
+        steps.cache-app2.outputs.cache-hit != 'true'
       shell: bash
       run: lerna bootstrap
