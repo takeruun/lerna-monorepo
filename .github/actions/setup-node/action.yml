@@ -36,10 +36,11 @@ runs:
           ${{ runner.os }}-app2-
 
     - name: cache ?
+      shell: bash
       run: |
-        echo ${{ steps.cache-root.outputs.cache-hit }}
-        echo ${{ steps.cache-app1.outputs.cache-hit }}
-        echo ${{ steps.cache-app2.outputs.cache-hit }}
+        echo "cache-root: ${{ steps.cache-root.outputs.cache-hit }}"
+        echo "cache-app1: ${{ steps.cache-app1.outputs.cache-hit }}"
+        echo "cache-app2: ${{ steps.cache-app2.outputs.cache-hit }}"
 
     - name: Install dependencies
       if: |
