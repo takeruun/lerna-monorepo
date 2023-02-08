@@ -22,7 +22,7 @@ runs:
     - uses: actions/cache@v3
       id: cache-app1
       with:
-        path: ./app1/node_modules
+        path: ./packages/app1/node_modules
         key: ${{ runner.os }}-app1-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-app1-
@@ -30,7 +30,7 @@ runs:
     - uses: actions/cache@v3
       id: cache-app2
       with:
-        path: ./app2/node_modules
+        path: ./packages/app2/node_modules
         key: ${{ runner.os }}-app2-${{ hashFiles('**/yarn.lock') }}
         restore-keys: |
           ${{ runner.os }}-app2-
