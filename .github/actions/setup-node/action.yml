@@ -23,7 +23,7 @@ runs:
       shell: bash
       run: npm install --global lerna
 
-    - name: Install dependencies
-      if: steps.cache-root.outputs.cache-hit != 'true'
-      shell: bash
-      run: lerna bootstrap
+    # - name: Install dependencies
+    #   if: steps.cache-root.outputs.cache-hit != 'true'
+    #   shell: bash
+    #   run: lerna bootstrap
